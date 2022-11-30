@@ -225,7 +225,6 @@ export class HeroesPageComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        console.log(this.heroes.length);
     }
 
 }
