@@ -1,0 +1,32 @@
+<header>
+    <h5>
+        {{ questionOption?.text }}
+    </h5>
+    <div class="cross" (click)="close()"></div>
+</header>
+<div class="answers">
+
+</div>
+<div class="buttons-wrapper">
+    <button 
+        *ngIf="questionOption!.number !== 1"
+        class="back"
+        (click)="this.surveyState.emit(SurveyState.Back)"
+    >
+        Назад
+    </button>
+    <button
+        *ngIf="questionOption!.number !== 3; else complete"
+        class="next"
+        (click)="this.surveyState.emit(SurveyState.Next)"
+    >
+        Далее
+    </button>
+    <ng-template #complete>
+        <button
+            class="complete"
+        >
+            Завершить
+        </button>
+    </ng-template>
+</div>

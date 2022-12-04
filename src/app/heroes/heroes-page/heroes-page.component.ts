@@ -98,11 +98,11 @@ export class HeroesPageComponent implements OnInit {
         },
         {
             name: 'Танос',
-            imgSrc: 'Thanos'
+            imgSrc: 'thanos'
         },
         {
             name: 'Каратель',
-            imgSrc: 'pushiner'
+            imgSrc: 'punisher'
         },
         {
             name: 'Сорвиголова',
@@ -173,10 +173,6 @@ export class HeroesPageComponent implements OnInit {
             imgSrc: 'shuri'
         },
         {
-            name: 'Человек-Паук',
-            imgSrc: 'spider-man'
-        },
-        {
             name: 'Джаггернаут',
             imgSrc: 'juggernaut'
         },
@@ -199,10 +195,6 @@ export class HeroesPageComponent implements OnInit {
         {
             name: 'Лунный Рыцарь',
             imgSrc: 'moon-knight'
-        },
-        {
-            name: 'Морбиус',
-            imgSrc: 'morbius'
         },
         {
             name: 'Мистер Фантастик',
