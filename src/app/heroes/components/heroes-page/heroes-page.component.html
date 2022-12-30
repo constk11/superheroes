@@ -1,0 +1,48 @@
+<div class="container">
+    <header>
+        <div class="filters">
+            <div>
+                <p>Пол:</p>
+                <app-filters 
+                    [filterOptions]="sexFilters"
+                    [defaultFiltersSetter]="defaultFiltersSetter"
+                    (selectedFilter)="sex.next($event ? $event.value : 'all')"
+                ></app-filters>
+            </div>
+            <div>
+                <p>Отряд:</p>
+                <app-filters 
+                    [filterOptions]="squadFilters"
+                    [defaultFiltersSetter]="defaultFiltersSetter"
+                    (selectedFilter)="squad.next($event ? $event.value : 'all')"
+                ></app-filters>
+            </div>
+            <div>
+                <p>Тип:</p>
+                <app-filters 
+                    [filterOptions]="positionFilters"
+                    [defaultFiltersSetter]="defaultFiltersSetter"
+                    (selectedFilter)="position.next($event ? $event.value : 'all')"
+                ></app-filters>
+            </div>
+        </div>
+        <div>
+            <button (click)="setDefaultFilters()">Сбросить фильтры</button>
+            <img src="../../../../assets/refresh.svg" alt="">
+        </div>
+    </header>
+    <div class="heroes">
+        <app-hero-card
+            *ngFor="let hero of filteredHeroes | async"
+            [hero]="hero"
+            (click)="onHeroClick(hero.url)"
+        ></app-hero-card>
+    </div>
+    <p 
+        class="no-results" 
+        *ngIf="(filteredHeroes | async)?.length === 0 
+            && (sex.value !== 'all' || squad.value !== 'all' || position.value !== 'all')"
+    >
+        Ничего не найдено
+    </p>
+</div>

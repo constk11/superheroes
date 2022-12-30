@@ -1,0 +1,57 @@
+<p 
+    *ngIf="isFullyForm" 
+    class="not-fully-form"
+    [@notFullyForm]
+>
+    Вы ответили не на все вопросы!
+</p>
+
+<app-survey-result
+    [heroes]="resultHeroes">
+</app-survey-result>
+
+<header>
+    <h5>
+        {{ currentQuestion.text }}
+    </h5>
+    <div class="cross" (click)="closure.emit();"></div>
+    <p *ngIf="currentQuestion.additional">{{ currentQuestion.additional }}</p>
+</header>
+
+<app-answers
+    [max]="currentQuestion.max"
+    [multiple]="currentQuestion.multiple"
+    [questionOption]="currentQuestion"
+    (userName)="onUserNameInput($event)"
+    (selectedAnswers)="onAnswerSelected($event)"
+    (next)="next()"
+    class="answers"
+></app-answers>
+
+<div class="buttons-wrapper">
+    <button 
+        *ngIf="currentQuestion.number !== 1"
+        class="back"
+        (click)="back()"
+    >
+        Назад
+    </button>
+    <button
+        [class.disabled]="!surveyForm.userName || surveyForm.userName.length < 4"
+        *ngIf="currentQuestion.number !== 23; else completeButton"
+        class="next"
+        (click)="next()"
+    >
+        Далее
+    </button>
+    <ng-template #completeButton>
+        <button
+            class="complete"
+            (click)="complete()"
+        >
+            Завершить
+        </button>
+    </ng-template>
+</div>
+
+<p class="question-number">{{currentQuestion.number}} / 23</p>

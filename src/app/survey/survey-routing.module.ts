@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SurveyPageComponent } from './survey-page/survey-page.component';
+import { SurveyPageComponent } from './components/survey-page/survey-page.component';
 
 const routes: Routes = [{ path: '', component: SurveyPageComponent }];
 

@@ -1,20 +1,39 @@
 :host {
+    box-sizing: border-box;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 400px;
+    row-gap: 25px;
+    width: 500px;
     height: 400px;
     background-color: #605c5c;
     padding: 32px;
     border-radius: 12px;
 
+    .not-fully-form {
+        width: 325px;
+        height: 35px;
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        background-color: #605c5c;
+        transform: translateX(-50%);
+        color: #ff0000;
+        text-shadow: 0px 0px 20px #000;
+        line-height: 33px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
     header {
+        position: relative;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        row-gap: 10px;
+        padding-right: 20px;
 
         h5 {
             margin: 0;
@@ -23,7 +42,9 @@
 
         .cross {
             display: block;
-            position: relative;
+            position: absolute;
+            top: 0;
+            right: 0;
             width: 20px;
             height: 20px;
             cursor: pointer;
@@ -45,6 +66,11 @@
             &::after {
                 transform: rotate(-45deg);
             }
+        }
+
+        p {
+            font-size: 14px;
+            color: #ff7b7b;
         }
     }
 
@@ -68,6 +94,11 @@
 
             &.next {
                 margin-left: auto;
+
+                &.disabled {
+                    pointer-events: none;
+                    background-color: #9c9c9c;
+                }
             }
 
             &.complete {
@@ -79,5 +110,13 @@
                 }
             }
         }
+    }
+    
+
+    .question-number {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 42px;
     }
 }

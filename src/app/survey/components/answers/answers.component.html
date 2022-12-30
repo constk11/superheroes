@@ -1,0 +1,42 @@
+<ng-container *ngIf="questionOption?.answers; else input">
+    <div 
+        [class.two-columns]="questionOption.charachteristic === 'hair' 
+            || questionOption.charachteristic === 'color'"
+    >
+        <div 
+            *ngFor="let answer of questionOption?.answers"
+            class="answer"
+            (click)="onAnswerClick(answer)"
+            [class.multiple]="multiple"
+            [class.disabled]="checkDisabling(answer)"
+        >
+            <button
+                [class.multiple]="multiple"
+                [class.active]="isAnswerSelected(answer)"
+                [class.width-fix]="(answer | answerValue) === 'goodness' 
+                    || ((answer | answerValue) === 'neutral' 
+                        && questionOption.charachteristic === 'forgiveness')"
+                [class.width-few-fix]="(answer | answerValue) === 2
+                    && questionOption.charachteristic === 'musculature'"
+            ></button>
+        
+            <p>{{answer | answerText}}</p>
+        </div>
+    </div>
+</ng-container>
+<ng-template #input>
+    <input 
+        type="text" 
+        placeholder="Введите имя" 
+        [value]="enteredUserName"
+        (input)="setName($event)"
+        (blur)="showUserNameError = enteredUserName.length < 4"
+    >
+    <p 
+        [@userNameError]
+        class="min-length" 
+        *ngIf="showUserNameError"
+    >
+        Имя должно состоять минимум из 4 символов
+    </p>
+</ng-template>

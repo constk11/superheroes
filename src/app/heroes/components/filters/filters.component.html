@@ -1,0 +1,16 @@
+<button
+    [class.open]="isOpen"
+    (click)="isOpen = !isOpen"
+>
+    {{ selectedFilter.value?.text }}
+</button>
+<ul [@dropdown] *ngIf="isOpen">
+    <li *ngFor="let filterOption of filterOptions">
+        <button
+            [class.selected]="filterOption.value === selectedFilter.value?.value"
+            (click)="selectFilter(filterOption)"
+        >
+            {{ filterOption.text }}
+        </button>
+    </li>
+</ul>

@@ -1,0 +1,29 @@
+<header>
+    <p>Показать текущие результаты</p>
+    <div 
+        class="toggle"
+        [class.active]="show"
+        (click)="show = !show"
+    >
+        <div class="circle"></div>
+    </div>
+</header>
+
+<ng-container *ngIf="show">
+    <div 
+        *ngIf="heroes.length !== 0; else noResults"
+        class="heroes"
+        [@results]
+    >
+        <app-hero-card
+            *ngFor="let hero of heroes"
+            [hero]="hero"
+            [isResultList]="true"
+        ></app-hero-card>
+    </div>
+    <ng-template #noResults>
+        <div [@noResults] class="no-results">
+            <p>Нет текущих результатов</p>
+        </div>
+    </ng-template>
+</ng-container>

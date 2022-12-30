@@ -1,0 +1,96 @@
+@import '../../../../styles.scss';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    position: absolute;
+    top: -60px;
+    right: -400px;
+    background-color: #605c5c;
+    padding: 15px 7.5px 10px 10px;
+    border-radius: 10px;
+    
+    header {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+        padding: 0 15px;
+
+        .toggle {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            width: 50px;
+            height: 25px;
+            background-color: #8b8b8b;
+            border-radius: 20px;
+            padding: 0 3px;
+            cursor: pointer;
+            transition: all .4s ease-in-out;
+
+            .circle {
+                display: block;
+                width: 20px;
+                height: 20px;
+                background-color: #484646;
+                border-radius: 50%;
+                transform: translateX(0);
+                transition: all .4s ease-in-out;
+            }
+
+            &.active {
+                background-color: #ded7d7;
+
+                .circle {
+                    background-color: #b42121;
+                    transform: translateX(25px);
+                }
+            }
+        }
+    }
+
+    .heroes {
+        max-height: calc(50vh + 200px + 60px - 120px);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 20px;
+        overflow-y: auto;
+        @include Scroll(7px);
+    }
+
+    .no-results {
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            text-align: center;
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 1350px) {
+
+    :host {
+        right: -290px;
+        top: -80px;
+
+        header {
+            width: 255px;
+            column-gap: 15px;
+            padding: 5px;
+
+            p {
+                width: 180px;
+            }
+        }
+
+        .heroes {
+            padding-right: 5px;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<div [class.small]="isResultList">
+    <img [src]="'../../../assets/heroes/' + hero.imgSrc + '.jpg'" alt="">
+    <p>{{ hero.superhero }}</p>
+    <p class="score" *ngIf="hero.score !== undefined">Балл схожести: {{ hero.score }}</p>
+</div>

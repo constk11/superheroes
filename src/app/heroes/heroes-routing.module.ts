@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroesPageComponent } from './heroes-page/heroes-page.component';
+import { HeroesPageComponent } from './components/heroes-page/heroes-page.component';
 
 const routes: Routes = [{ path: '', component: HeroesPageComponent }];
 

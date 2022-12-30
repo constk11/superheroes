@@ -1,0 +1,37 @@
+<div 
+    [class.active]="isSurveyOpen"
+    class="blackout"
+></div>
+
+<div 
+    *ngIf="result && !isSurveyOpen"
+    class="result"
+    [@result]
+>
+    <header>
+        <p>Ты {{ result.superhero }}!</p>
+    </header>
+    <div class="info">
+        <img [src]="'../../../assets/heroes/' + result.imgSrc + '.jpg'" alt="">
+        <div>
+            <p>{{ result.superhero }}</p>
+            <p *ngIf="result.name">({{ result.name }})</p>
+        </div>
+    </div>
+    <a [href]="result.url" target="_blank">Узнать больше о персонаже</a>
+</div>
+
+<button
+    *ngIf="!isSurveyOpen; else survey"
+    [@button]
+    (click)="isSurveyOpen = !isSurveyOpen"
+>
+    Узнать, какой ты супергерой
+</button>
+<ng-template #survey>
+    <app-survey-popup 
+        (closure)="isSurveyOpen = false;"
+        (result)="result = $event"
+        [@popup]>
+    </app-survey-popup>
+</ng-template>

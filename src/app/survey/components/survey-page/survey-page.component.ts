@@ -1,6 +1,6 @@
 import { transition, animate, style, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { QuestionOption, QUESTION_OPTIONS, SurveyState } from '../models/questions';
+import { Component } from '@angular/core';
+import { Hero } from 'src/app/heroes/models/hero';
 
 @Component({
     selector: 'app-survey-page',
@@ -32,41 +32,24 @@ import { QuestionOption, QUESTION_OPTIONS, SurveyState } from '../models/questio
                 style({ opacity: 1 }),
                 animate('200ms ease-out', style({opacity: 0}))
             ]),
-        ])
+        ]),
+        trigger('result', [
+            transition(':enter', [
+                style({ opacity: 0,}),
+                animate('300ms ease-out', style({opacity: 1}))
+            ]),
+            transition(':leave', [
+                style({ opacity: 1 }),
+                animate('200ms ease-out', style({opacity: 0}))
+            ]),
+        ]),
     ]
 })
-export class SurveyPageComponent implements OnInit {
+export class SurveyPageComponent {
 
-    public readonly questionOptions = QUESTION_OPTIONS;
+    public isSurveyOpen = false;
 
-    public currentQuestion: QuestionOption | null = null;
+    public result?: Hero;
 
-    constructor() { }
-
-    ngOnInit(): void {
-    }
-
-    public openSurvey() {
-        this.currentQuestion = this.questionOptions[0];
-    }
-
-    public setCurrentQuestion(state: SurveyState) {
-        if (state === SurveyState.Cancel) {
-            this.currentQuestion = null;
-            return;
-        }
-        if (state === SurveyState.Back) {
-            this.currentQuestion = this.questionOptions[
-                this.questionOptions.indexOf(this.currentQuestion!) - 1
-            ];
-            return;
-        }
-        if (state === SurveyState.Next) {
-            this.currentQuestion = this.questionOptions[
-                this.questionOptions.indexOf(this.currentQuestion!) + 1 
-            ];
-            return;
-        }
-    }
-
+    constructor() {}
 }
