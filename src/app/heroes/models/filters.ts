@@ -9,11 +9,11 @@ export const SEX_FILTERS: Filter[] = [
         value: 'all'
     },
     {
-        text: 'Мужчины',
+        text: 'Мужской',
         value: 'm'
     },
     {
-        text: 'Женщины',
+        text: 'Женский',
         value: 'w'
     },
 ];
