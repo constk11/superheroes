@@ -56,6 +56,7 @@ export class HeroesPageComponent implements OnInit {
             map(obj => Object.values(obj)[0])
         ));
         this.setDefaultFilters();
+        console.log(this.heroes.map(hero => hero.url));
     }
 
     public setDefaultFilters(): void {

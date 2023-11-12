@@ -59,6 +59,7 @@ export class SurveyPopupComponent implements OnInit {
 
     public async ngOnInit(): Promise<void> {
         this.heroes = Object.values(await lastValueFrom(this.http.get(`${environment.url}/heroes.json`)))[0];
+        console.log(this.questionOptions.filter(question => !!question.multiple).length);
     }
 
     public back(): void {
